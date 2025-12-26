@@ -33,3 +33,28 @@ export type TActionToDoList = addToList | removeToList| EditTextToList
 
 // --------------------------------------------------------------------------------
 
+// api 
+
+export interface IDataApi  {
+    userId: number,
+    id: number, 
+    title: string, 
+    body: string
+}
+export interface IApiState {
+    data: Array<IDataApi>,
+    error : string | null,
+    isLoading: boolean
+}
+
+export enum actionTypeApi {
+    LOADING = 'loading',
+    SUCCSESS = 'sucsess',
+    REJECT = 'reject'
+}
+
+interface LoadingApi { type: actionTypeApi.LOADING }
+interface SucsessApi {type : actionTypeApi.SUCCSESS, payload: Array<IDataApi>}
+interface RejectApi {type : actionTypeApi.REJECT, payload: string | null}
+
+export type TActionApi = LoadingApi | SucsessApi | RejectApi
