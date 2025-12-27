@@ -1,25 +1,19 @@
 import { useDispatch } from 'react-redux'
 import './App.css'
-import Counter from './components/counter'
-import ToDoList from './components/todos'
-import { FetchApi } from './redux/actions'
 import type { AppDispatch } from './redux/store'
-import APIComponent from './components/api'
+import apiFetch from './redux/action'
+import ComponentApi from './components/apiComponent'
 
 function App() {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch =  useDispatch<AppDispatch>()
   return (
     <div className="text-rose-400">
-        <Counter />
-        <hr />
-        <ToDoList />
-        <hr />
-        <button 
-          className='text-green-500'
-          onClick={()=> {dispatch(FetchApi())}}>Request To Api
-        </button>
-        
-        <APIComponent />
+      <button className='text-green-600'
+        onClick={() => {dispatch(apiFetch())}}
+      >
+        requst to api
+      </button>
+      <ComponentApi />
     </div>  
   )
 }

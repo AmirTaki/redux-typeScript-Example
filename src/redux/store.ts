@@ -1,21 +1,14 @@
-import {   applyMiddleware, combineReducers, createStore,  } from "redux";
-import reducerCounter from "./counterReducer";
-import reducerTodoList from "./todoListReducer";
-import ReducerApi from "./apiReducer";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import reducer from "./reducerApi";
 import { thunk } from "redux-thunk";
 
-
-const reducers = combineReducers({
-    counter: reducerCounter,
-    todos: reducerTodoList,
-    api : ReducerApi
+const reducers =  combineReducers({
+    api: reducer
 })
 
+const store = createStore(reducers, {}, applyMiddleware(thunk))
+export default store
 
-const store = createStore(reducers,{}, applyMiddleware(thunk))
-export default store;
 
-
-export type RootState = ReturnType<typeof reducers>
+export type RootStore = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
-
