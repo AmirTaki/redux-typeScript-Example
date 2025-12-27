@@ -1,33 +1,12 @@
-export interface IAlbumsApi {
-    userId: number
-    id: number
+export interface IData {
+    id: number, 
+    userId: number, 
     title: string
 }
-export interface IinitialState  {
-    isLoading: boolean, 
-    data: Array<IAlbumsApi> | null,
-    error : null  | string
-}
-
-export enum actionType {
-    LOADING = 'LOADING',
-    SUCCESS = 'SUCCESS',
-    REJECT = 'REJECT'
+export interface IinitialState {
+    isLoading: boolean;
+    error:   string ;
+    data: Array<IData> 
 }
 
 
-
-interface actionLoding {
-    type : actionType.LOADING,
-}
-
-interface actionSuccess {
-    type: actionType.SUCCESS,
-    payload: Array<IAlbumsApi> 
-}
-
-interface actionReject {
-    type: actionType.REJECT,
-    payload: string
-}
-export type TAction = actionLoding | actionSuccess | actionReject

@@ -1,21 +1,21 @@
 import { useSelector } from "react-redux";
-import type { RootStore } from "../redux/store";
+import type { RootState } from "../redux/store";
 
 const ComponentApi = () => {
-    const {isLoading, data, error} =  useSelector((state: RootStore) => state.api)
-   
-    if(isLoading) {return <h3 className="text-blue-500">please wait</h3>}
-    if(error) {return <h2 className="text-red-700">{error}</h2>}
-    return(
+   const {isLoading, data, error}  = useSelector((state:RootState ) => state.api)
+
+    if(isLoading){return <div className="text-blue-500">please wait</div>}
+    if(error){return <div className="text-red-600">{error}</div>}
+   return(
         <div className="">
             <ul>
-                {!isLoading  &&  data?.map((item) => {
-                    return(
-                        <li key = {item.id}>
-                            {item.title}
-                        </li>
-                    )
-                })}
+              { data?.map((item) => {
+                return(
+                    <li key = {item.id}>
+                        {item.title}
+                    </li>
+                )
+              })}
             </ul>
         </div>
     )
