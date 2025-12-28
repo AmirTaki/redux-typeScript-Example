@@ -1,30 +1,39 @@
-import { ActionType, type IinitialState, type TAction } from "../types/types"
+// toolkit // initialState // reducer => createSlicer // action ==> api createAsyunThunk
 
-// initila State 
+import {  createSlice } from "@reduxjs/toolkit";
+import type { IinitialState,  } from "../types/types";
+import { AxiosApi, fetchApi, PromisApi } from "./actions";
+
 const initialState: IinitialState = {
-    isLoading: false,
     data: [],
-    error: ''
+    error: '',
+    isLoading: false
 }
 
 
 
-/// reducer
-
-const reducerApi = (state = initialState, action: TAction): IinitialState => {
-    switch(action.type){
-        case ActionType.ISLOADING:
-            return {...state, isLoading: true, data: null, error: null}
-
-        case ActionType.SUCESESS :  
-            return {...state, isLoading: false, data: action.payload, error: null}
-        
-        case ActionType.REJECTS :
-            return {...state, isLoading: false, error: action.payload, data: null }
-        default: 
-            return state
+const sliceApi =  createSlice({
+    name : 'api-toolkit',
+    initialState: initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder 
+            .addCase(PromisApi.pending, (state,) => {
+                state.isLoading = true,
+                state.data = null,
+                state.error = null
+            })
+            .addCase(PromisApi.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.data = action.payload;
+                state.error = null
+            })
+            .addCase(PromisApi.rejected, (state, action) => {
+                state.isLoading = false;
+                state.data = [];
+                state.error = action.payload as string
+            })
     }
-}
-/// 
+})
 
-export default reducerApi;
+export default sliceApi

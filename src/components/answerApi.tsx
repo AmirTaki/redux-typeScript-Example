@@ -1,8 +1,8 @@
 import type { IinitialState } from "../types/types";
 
-const AnswoerApi = ({isLoading, data, error}:IinitialState ) => {
-    if(isLoading){return <h3 className="text-green-500">please wait request to api</h3>}
-    if (error) {return <h4 className="text-red-700">{error}</h4>}
+const AnswoerApi = ({data, isLoading, error}:  IinitialState) => {
+    if(isLoading) {return <div className="text-blue-500">please wait request to api</div>}
+    if(error) {return <div className="text-red-600">{error}</div>}
     return(
         <div className="">
             <ul>
@@ -14,7 +14,6 @@ const AnswoerApi = ({isLoading, data, error}:IinitialState ) => {
                     )
                 })}
             </ul>
-
         </div>
     )
 }
