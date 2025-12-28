@@ -1,0 +1,1 @@
+export const ApiLinks: string = 'https://jsonplaceholder.typicode.com/albums'

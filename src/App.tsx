@@ -1,19 +1,27 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import ComponentApi from './components/apiComponent'
-import type { AppDispatch } from './redux/store'
-import { fetchApi } from './redux/slicer'
+import type { AppDispatch, RootState } from './redux/store'
+import { axiosApi, fetchApi, promisApi } from './redux/actions'
+import AnswoerApi from './components/answerApi'
 
 function App() {
-  const dispath =  useDispatch<AppDispatch>()
+  const dispatch =  useDispatch<AppDispatch>()
+  const {isLoading, data, error} = useSelector((state: RootState) => state.api)
   return (
     <div className="text-rose-400">
-      <button
-        onClick={() => {dispath(fetchApi())}}
+      <button className='text-blue-500'
+        // onClick={() => {dispatch(fetchApi())}}
+        // onClick={() => {dispatch(axiosApi())}}
+        onClick={() => {dispatch(promisApi())}}
       >
         request to api
       </button>
-      <ComponentApi />
+      <AnswoerApi 
+        isLoading = {isLoading}
+        data = {data}
+        error = {error} 
+
+      />
     </div>  
   )
 }

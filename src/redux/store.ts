@@ -1,14 +1,14 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import reducerApi from "./slicer";
-const reducers = combineReducers({
-    api : reducerApi.reducer
-})
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import reducerApi from "./reducer";
+import { thunk } from "redux-thunk";
 
-const store =  configureStore(({
-    reducer: reducers 
-}))
-export default store
+
+const reducers = combineReducers ({
+    api : reducerApi
+})
+const store =  createStore(reducers, {}, applyMiddleware(thunk))
+export default store;
 
 
 export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch
