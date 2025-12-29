@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="text-rose-400 flex flex-col gap-5">
+      <p> 2353392 ==== complete example reudx-toolkit counter-todolist-api:fetch/axios/promis </p>
       <p> dc91814 ==== complete example redux counter-todolist-api:fetch/axios/promis
       </p><p> 72acdfd ==== api redux-toolkit with fetch/axios/promis
       </p><p> 16dd5cf ==== api redux with fetch/axios/promis
