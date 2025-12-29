@@ -1,13 +1,14 @@
 import { useDispatch } from 'react-redux'
 import './App.css'
-import ApiData from './components/Api'
-import Counter from './components/Counter'
-import List from './components/List'
-import { axiosApi, fetchApi, promisApi } from './redux/action'
-import type { AppDispatch } from './redux/store'
+import Api from './components/api'
+import Counter from './components/counter'
+import List from './components/list'
+import type { AppDispatch } from './store'
+import { AsyncAwiatFetch, promisFetch, asyncAwaitAxios, promisAxios } from './redux/actionsApi'
+
 
 function App() {
-  const dispatch =  useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>()
   return (
     <div className="text-rose-400 flex flex-col gap-5">
       <Counter />
@@ -16,13 +17,13 @@ function App() {
       <hr />
       <button
         className='text-green-500'
-        // onClick={()=>{dispatch(fetchApi())}}
-        // onClick={()=>{dispatch(axiosApi())}}
-        onClick={() => {dispatch(promisApi())}}
-      >
-        click to request api
-      </button>
-      <ApiData />
+       
+        // onClick={() => {dispatch(AsyncAwiatFetch())}}
+        // onClick={() => {dispatch(promisFetch())}}
+        // onClick={() => {dispatch(asyncAwaitAxios())}}
+        onClick={() => {dispatch(promisAxios())}}
+      >request to api</button>
+      <Api />
     </div>  
   )
 }
