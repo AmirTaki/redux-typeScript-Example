@@ -1,29 +1,19 @@
-import { useDispatch } from 'react-redux'
 import './App.css'
-import Api from './components/api'
-import Counter from './components/counter'
-import List from './components/list'
-import type { AppDispatch } from './store'
-import { AsyncAwiatFetch, promisFetch, asyncAwaitAxios, promisAxios } from './redux/actionsApi'
+
 
 
 function App() {
-  const dispatch = useDispatch<AppDispatch>()
+
   return (
     <div className="text-rose-400 flex flex-col gap-5">
-      <Counter />
-      <hr />
-      <List />
-      <hr />
-      <button
-        className='text-green-500'
-       
-        // onClick={() => {dispatch(AsyncAwiatFetch())}}
-        // onClick={() => {dispatch(promisFetch())}}
-        // onClick={() => {dispatch(asyncAwaitAxios())}}
-        onClick={() => {dispatch(promisAxios())}}
-      >request to api</button>
-      <Api />
+      <p> dc91814 ==== complete example redux counter-todolist-api:fetch/axios/promis
+      </p><p> 72acdfd ==== api redux-toolkit with fetch/axios/promis
+      </p><p> 16dd5cf ==== api redux with fetch/axios/promis
+      </p><p> def1867 ==== api fetch redux-toolkit ***
+      </p><p> 8a07a50 ==== api fetch redux
+      </p><p> 0f2bdd2 ==== project API Request
+      </p><p> 3039c7e ==== project ToDoList
+      </p><p> 830603f ==== projec counter </p>
     </div>  
   )
 }
